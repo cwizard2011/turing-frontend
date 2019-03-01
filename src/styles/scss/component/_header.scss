@@ -1,0 +1,153 @@
+.logo {
+    width: 100px;
+    height: 40px;
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.auth-link, .auth-link:hover {
+    color: $red;
+}
+
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:0%;
+  content: attr(data-count);
+  font-size:40%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: $white;
+  color:$white;
+  text-align:center;
+  min-width:2em;
+  font-weight:bold;
+  background: $red;
+  border-style:solid;
+}
+
+.red-cart {
+	color: $red; background: $white;
+}
+.main-navbar {
+    background-color: $white !important;
+  
+    .nav-item .nav-link,
+    .nav-link {
+      color: $black;
+    }
+  
+    .categories {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+  
+    .dropdown-item {
+      color: $ash;
+    }
+  
+    .categories .nav-link {
+      font-weight: 300;
+    }
+  
+    .categories .nav-link:hover {
+      font-weight: 400;
+    }
+  }
+  
+  .main-navbar .nav-divider {
+    background-color: $red;
+    height: 0.1px;;
+  }
+  
+  li .login-link,
+  li .register-link {
+    border: 0;
+    padding: 8px 0 !important;
+  }
+  
+  .main-navbar .form-control {
+    background-color: $white;
+    padding-left: 2px;
+  }
+  
+  .main-navbar .user-image {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .main-nav .mdi-magnify,
+  .main-nav .mdi-bell-outline {
+     color: $red;
+  }
+  
+  .main-nav .bell,
+  .main-nav .search {
+     margin-top: 2px;
+  }
+  
+  .main-navbar .dropdown-menu,
+  .dropdown-divider {
+    border: thin solid $red;
+  }
+  
+  @media (min-width: 576px) {
+    .navbar-nav {
+      .nav-item .login-link,
+      .nav-item .register-link {
+        border: thin solid $red;
+        font-size: 15px;
+        font-weight: 300;
+        margin-top: 6px;
+        padding: 2px 15px !important;
+      }
+  
+      .nav-item .login-link:hover,
+      .nav-item .register-link:hover {
+        background-color: $red;
+        color: $white;
+      }
+  
+    }
+  }
+  
+  @media (min-width: 700px) {
+    .navbar .logo {
+      margin-left: 15px;
+    }
+  
+    .main-navbar .main-nav {
+      margin-right: 20px;
+    }
+  }
+  
+  .not-found {
+    align-items: center;
+    background-image: url(https://bit.ly/2QZ6D4C);
+    background-size: cover;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: hidden;
+    justify-content: center;
+    width: 100vw;
+  }
+  
+  .not-found-btn {
+    background: $red;
+    border: 1px solid $red;
+    border-radius: 3px;
+    color: $white;
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 6px;
+    padding: 2px 15px !important;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  

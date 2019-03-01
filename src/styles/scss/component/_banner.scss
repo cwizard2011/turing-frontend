@@ -1,0 +1,64 @@
+div.carousel {
+    background: no-repeat url("https://res.cloudinary.com/cwizard/image/upload/v1551379908/Turing/adult-beautiful-black-friday-291762.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+  }
+  .banner-item {
+    color: $white;
+    border-radius: 25%;
+    flex-shrink: 1;
+    text-align: center;
+    margin-left: 30px;
+    padding: 2px;
+    max-width: 430px;
+    min-width: 300px;
+    width: 50%;
+    font-size: 35px !important;
+  }
+
+  .banner-subitem {
+    color: $white;
+    flex-shrink: 1;
+    margin-left: 30px;
+    max-width: 465px;
+    min-width: 300px;
+    width: 50%;
+    font-size: 20px !important;
+  }
+
+  .carousel-inner {
+    top: 100px;
+  }
+
+.main-content {
+        margin: 5% auto;
+        width: 90%;
+}
+.max-height {
+    min-height: 420px;
+}
+.background-white {
+    background: grey !important;
+}
+
+  @media (min-width: 700px) {
+    .carousel-inner {
+      top: 110px;
+    }
+  }
+  @media (min-width: 320px) and (max-width:640px){
+      .max-height {
+          min-height: 100%;
+      }
+      .banner-subitem {
+        margin: auto auto;
+      }
+  }
+  
+  @media (min-width: 992px) {
+    .carousel-inner {
+      padding-left: 100px;
+    }
+   }

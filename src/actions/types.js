@@ -1,0 +1,13 @@
+// auth actions
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const SIGN_UP_ERRORS = 'SIGN_UP_ERRORS';
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const SET_CURRENT_USER_FAIL = 'SET_CURRENT_USER_FAIL';
+
+
+// modal actions
+export const SHOW_SIGNUP_MODAL = 'SHOW_SIGNUP_MODAL';
+export const HIDE_SIGNUP_MODAL = 'HIDE_SIGNUP_MODAL';
+export const DELETE_ERROR_MESSAGE = 'DELETE_ERROR_MESSAGE';
+export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
+export const HIDE_LOGIN_MODAL = 'HIDE_LOGIN_MODAL';

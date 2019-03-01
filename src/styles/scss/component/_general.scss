@@ -1,0 +1,81 @@
+h1 {
+    font-family: 'Playfair Display';
+    font-size: 48px;
+    color: $black;
+    line-height: 150%
+}
+
+h2 {
+    font-family: 'Montserrat';
+    font-size: 24px;
+    color: $black;
+    line-height: 150%
+}
+
+h3 {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: $black;
+    line-height: 150%
+}
+
+.top-bar {
+    font-family: 'Montserrat';
+    font-size: 15px;
+    color: $black;
+    line-height: 240%;
+}
+
+p, .custom {
+    font-family: 'Open Sans' !important;
+    font-size: 16px;
+    color: $black;
+    line-height: 150%
+}
+
+.register-button {
+    padding: 8px 16px;
+    background: $red;
+    color: $white;
+    border-radius: 20px;
+}
+.discount-heading {
+    color: $red
+}
+
+.discount-card-background {
+    background: $cream
+}
+button {
+    font-family: 'Montserrat';
+}
+
+.footer {
+    background-color: $ash;
+    left: 0;
+    bottom: 0;
+    position: relative;
+    color: $white !important;
+    padding: 10px;
+    width: 100%;
+  }
+
+@media(min-width: 320px) and (max-width: 640px) {
+    p {
+        font-family: 'Open Sans';
+        font-size: 12px;
+        color: $black;
+        line-height: 200%
+    }
+    h1 {
+        font-size: 38px;
+    }
+    
+    h2 {
+        font-size: 15px;
+    }
+    
+    h3 {
+        font-size: 14px;
+    }
+}

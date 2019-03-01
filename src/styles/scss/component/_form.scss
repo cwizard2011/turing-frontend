@@ -1,0 +1,100 @@
+.form-control:not(:focus) {
+    font-style:italic;
+  }
+  
+  .form-row>.col, .form-row>[class*=col-] {
+    padding: 8px 15px 8px 15px;
+  }
+  
+  form hr {
+    padding: 0;
+    border: none;
+    border-top:  1px solid #CCC;
+    color: #333;
+    text-align: center;
+    font-size:12px;
+    width: 95%;
+  }
+  
+  form hr:after {
+    content:"OR";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+    border-radius: 50px 20px;
+    border-color: black;
+  }
+  
+  .card-header {
+    font-family: 'Montserrat' !important;
+    font-weight: 300;
+  }
+
+  .card-title {
+      color: $red !important;
+  }
+  
+  .login-label {
+    font-weight: bold;
+    padding-top: 10px;
+  }
+  
+  .login-label-2 {
+    font-weight: bold;
+  }
+  
+  .login-btn {
+    width: 100%;
+    background-color: $red;
+    border-color: $red;
+    color: $white;
+  }
+  
+  .btn-update {
+    margin-bottom: 15px;
+  }
+  
+  div .login-label {
+    text-align: center;
+  }
+  
+  div .login-label-2 {
+    text-align: center;
+  }
+  
+  div .form-text {
+    text-align: center;
+  }
+  
+  .form-gap {
+    padding-top: 120px;
+  }
+  
+  .form-margin {
+    margin-top: 120px;
+  }
+  
+  .password-input {
+    margin: 25px 5px;
+  }
+  
+  .panel {
+    padding: 20px;
+  }
+  
+  .form-input {
+    border: 1px solid;
+    border-radius: 0.3rem;
+    height: 40px;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
+    padding-bottom: 0.8rem;
+    padding-left: 0.7rem;
+    padding-top: 0.8rem;
+    width: 100%;
+  }
+
+  
