@@ -44,7 +44,7 @@ export class SignUpModal extends React.Component {
 
 SignUpModal.propTypes = {
   hideModalSignup: PropTypes.func.isRequired,
-  show: PropTypes.bool
+  show: PropTypes.bool,
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({

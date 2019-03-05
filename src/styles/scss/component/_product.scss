@@ -1,0 +1,158 @@
+.price {
+    color: $red;
+    font-weight: bold !important
+}
+
+.product-header {
+    background: $red;
+    color: $white;
+    font-family: 'Montserrat'
+}
+
+.category-background {
+    background: $sky-blue
+}
+
+.card-background {
+    background: $black
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.quantity {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  background: $cream;
+  font-size: 16px;
+  font-weight: bolder
+}
+
+.quantity-view {
+  height: 30px;
+  width: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 8px;
+  font-size: 16px;
+  font-weight: bolder
+}
+
+.attributes-color {
+  margin: 0 8px;
+}
+.attributes-size {
+  margin: 0 8px;
+  background: $cream;
+}
+
+.loading-center {
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  .categories {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .buy-now {
+    font-size: 16px !important;
+  }
+
+
+.loader {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 10px;
+	padding: 10px;
+
+	p {
+		font-size: 18px;
+		padding: 0;
+
+		span {
+			img {
+				width: 100%
+			}
+		}
+	}
+}
+
+.jumbotron {
+  background-image: linear-gradient(to right, $red, $sky-blue)
+}
+
+.product-hover {
+  position: relative;
+  width: 50%;
+
+  img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: $white;
+  background-color: $red;
+  border-color: $red;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: $sky-blue;
+  background-color: $white;
+  border: 1px solid $cream;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.product-hover:hover img {
+  opacity: 0.3;
+}
+
+.product-hover:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-align: center
+}
+
+@media(min-width: 320px) and (max-width: 760px) {
+    .categories {
+        display: flex;
+        flex-direction: column;
+    }
+    .hidden {
+      display: none;
+    }
+}

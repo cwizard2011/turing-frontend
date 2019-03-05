@@ -13,6 +13,7 @@ const webpackProdConfig = merge(common, {
   optimization: {
     minimizer: [
       new UglifyJSPlugin({
+        test: /\.js($|\?)/i,
         uglifyOptions: {
           compress: {
             warnings: false

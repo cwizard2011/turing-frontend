@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SignupModal from './SignupModal';
 import LoginModal from './LoginModal';
+import AddToCartModal from './AddToCartModal';
 
 /**
    * @class Modal
@@ -16,7 +17,7 @@ export class Modal extends Component {
    * @returns {JSX} JSX representation of component
    */
   render() {
-    const { modal } = this.props;
+    const { modal, history, itemName } = this.props;
 
     return (
       <div
@@ -25,9 +26,13 @@ export class Modal extends Component {
         style={{ display: modal.current === null ? 'none' : 'block' }}
       >
         <div className="modal-overlay" />
-        <div className="modal-dialog">
-          {modal.current === 'signup' && <SignupModal show={modal.current === 'signup'} />}
-          {modal.current === 'login' && <LoginModal show={modal.current === 'login'} />}
+        <div className="modal-dialog modal-dialog-centered">
+          {modal.current === 'signup'
+          && <SignupModal show={modal.current === 'signup'} history={history} />}
+          {modal.current === 'login'
+          && <LoginModal show={modal.current === 'login'} history={history} />}
+          {modal.current === 'cart'
+          && <AddToCartModal show={modal.current === 'cart'} itemName={itemName} />}
         </div>
       </div>
     );
@@ -36,6 +41,8 @@ export class Modal extends Component {
 
 Modal.propTypes = {
   modal: PropTypes.shape({}),
+  history: PropTypes.shape({}),
+  itemName: PropTypes.string
 };
 
 const mapStateToProps = state => ({

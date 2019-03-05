@@ -1,16 +1,49 @@
-const merge = require('webpack-merge');
-const webpack = require('webpack');
-const common = require('./webpack.config.js');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const webpackDevConfig = merge(common, {
-  mode: 'development',
-  devtool: 'eval-source-map',
-
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[hash].min.js',
+    publicPath: '/',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        }
+      },
+      {
+        test: /\.(css|sass|scss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000,
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }]
+      },
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.css', '.scss'],
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
     }),
-  ]
-});
-
-module.exports = webpackDevConfig;
+  ],
+  devServer: {
+    historyApiFallback: true,
+    port: 5000,
+  },
+};

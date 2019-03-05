@@ -6,6 +6,7 @@ import TextField from '../common/TextField';
 import SignUpInputValidation from '../../validations/SignUpInputValidate';
 import ErrorAlertNotification from '../common/ErrorAlertNotification';
 import { userSignUpRequest, deleteErrorMessage } from '../../actions/signUp.action';
+import browserHistory from '../../utils/history';
 
 
 /**
@@ -69,6 +70,7 @@ export class SignUpForm extends Component {
       signUp(this.state)
         .then(() => {
           userProfile(username);
+          browserHistory.pushState('/items');
         });
     }
   }
@@ -122,7 +124,7 @@ export class SignUpForm extends Component {
             <div className="form-row">
               <div className="form-group col-md-6 custom">
                 <TextField
-                  error={errors.firstname}
+                  error={errors.fullname}
                   onChange={this.onChange}
                   value={fullname}
                   placeholder="fullname"
@@ -189,6 +191,7 @@ SignUpForm.propTypes = {
   deleteError: PropTypes.func.isRequired,
   userProfile: PropTypes.func,
   error: PropTypes.shape({}),
+  history: PropTypes.shape({}),
   auth: PropTypes.bool
 };
 

@@ -25,7 +25,7 @@ export class LoginModal extends Component {
     return (
       <div className="modal-content" style={{ display: !show ? 'none' : 'block' }}>
         <div className="modal-header card-title card-header">
-          <h5 className="modal-title">SIGN IN</h5>
+          <h2 className="modal-title">SIGN IN</h2>
           <button
             type="button"
             className="close"
@@ -48,7 +48,7 @@ export class LoginModal extends Component {
 }
 
 LoginModal.propTypes = {
-  hideModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func,
   show: PropTypes.bool,
 };
 

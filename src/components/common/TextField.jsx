@@ -7,7 +7,7 @@ const TextField = ({
 }) => (
   <div className={classnames({ 'text-danger': error })}>
     <input
-      className="form-control pl-3"
+      className="form-control pl-3 custom"
       type={type}
       name={field}
       value={value}

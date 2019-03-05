@@ -5,6 +5,12 @@
 html {
   font-family: 'Open Sans';
   font-size: 16px;
-  max-width: 1500px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0
+}
+
+html, body {
+  min-height: 100%;
+  position: relative;
 }

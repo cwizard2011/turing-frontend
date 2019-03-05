@@ -3,6 +3,8 @@ import {
   HIDE_SIGNUP_MODAL,
   SHOW_LOGIN_MODAL,
   HIDE_LOGIN_MODAL,
+  SHOW_CART_MODAL,
+  HIDE_CART_MODAL
 } from '../actions/types';
 
 const initialState = {
@@ -27,6 +29,15 @@ export default (state = initialState, action) => {
     };
 
     case HIDE_LOGIN_MODAL: return {
+      ...state,
+      current: null
+    };
+    case SHOW_CART_MODAL: return {
+      ...state,
+      current: 'cart'
+    };
+
+    case HIDE_CART_MODAL: return {
       ...state,
       current: null
     };

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Loading from '../common/Loading';
+import FeaturedCategories from './FeaturedCategories';
+import DealOfDay from './DealOfDay';
 
 /**
  * @class LandingPageBanner
@@ -8,64 +12,25 @@ class ProductContainer extends Component {
   /**
    * @description Render the JSX template
    *
-   * @memberof LoginModal
+   *
    *
    * @returns {JSX} JSX representation of component
    */
   render() {
+    const { department } = this.props;
+    if (department && !department.department) {
+      return (
+        <div className="d-flex">
+          <div className="row d-flex justify-content-center">
+            <Loading />
+          </div>
+        </div>
+      );
+    }
     return (
       <div>
-        <div className="row main-content">
-          <div className="col-md-12">
-            <div className="shadow-lg border-0 card p-3 p-lg-4">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-4">
-                    <p>Product Image here</p>
-                  </div>
-                  <div className="col-md-7">
-                    <p>Description here With supporting text below as a natural lead-in</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row main-content">
-          <div className="col-md-4">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="shadow-lg border-0 card p-3 p-lg-4">
-                  <div className="card-body">
-                    <h3>Special title treatment 1</h3>
-                    <p>With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-11 main-content">
-                <div className="row">
-                  <div className="shadow-lg border-0 card p-3 p-lg-4">
-                    <div className="card-body">
-                      <h3>Special title treatment 2</h3>
-                      <p>With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" className="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-8 ">
-            <div className="shadow-lg border-0 card p-3 p-lg-4">
-              <div className="card-body max-height">
-                <h3>Special title treatment 3</h3>
-                <p>With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <FeaturedCategories department={department} />
+        <DealOfDay title="Deal of the Day" />
         <div className="row">
           <div className="shadow-lg col-lg-12">
             <div className="card border-0 p-3 p-lg-4 discount-card-background">
@@ -80,7 +45,7 @@ class ProductContainer extends Component {
                 We offer the best price you can never see anywhere
                 </h3>
                 <h3 className="d-flex justify-content-center">Want to place an order?</h3>
-                <Link to="/" className="d-flex justify-content-center">
+                <Link to="/items" className="d-flex justify-content-center">
                   <button type="button" className="register-button">Start Here</button>
                 </Link>
               </div>
@@ -91,5 +56,9 @@ class ProductContainer extends Component {
     );
   }
 }
+
+ProductContainer.propTypes = {
+  department: PropTypes.shape({}),
+};
 
 export default ProductContainer;

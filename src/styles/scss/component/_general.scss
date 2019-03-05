@@ -26,6 +26,10 @@ h3 {
     line-height: 240%;
 }
 
+body {
+    padding-bottom: 96px;
+  }
+
 p, .custom {
     font-family: 'Open Sans' !important;
     font-size: 16px;
@@ -39,8 +43,28 @@ p, .custom {
     color: $white;
     border-radius: 20px;
 }
+
+.continue-shopping {
+    color: $red;
+    background: $cream;
+    border-radius: 20px;
+}
+
+.checkout {
+    color: $white;
+    background: $red
+}
 .discount-heading {
     color: $red
+}
+.white {
+    color: $white;
+}
+.red {
+    color: $red;
+}
+.ash {
+    color: $ash
 }
 
 .discount-card-background {
@@ -54,12 +78,15 @@ button {
     background-color: $ash;
     left: 0;
     bottom: 0;
-    position: relative;
+    position: absolute;
     color: $white !important;
     padding: 10px;
     width: 100%;
   }
-
+.nav-divider {
+    background-color: $red;
+    height: 0.1px;
+  }
 @media(min-width: 320px) and (max-width: 640px) {
     p {
         font-family: 'Open Sans';
@@ -68,7 +95,7 @@ button {
         line-height: 200%
     }
     h1 {
-        font-size: 38px;
+        font-size: 24px;
     }
     
     h2 {
