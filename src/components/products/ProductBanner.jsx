@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import Loading from '../common/Loading';
 
 /**
  * @class LandingPageBanner
@@ -18,24 +16,9 @@ class ProductPageBanner extends Component {
     const { products, location } = this.props;
     let itemDepartment;
     let itemCategory;
-    if (location && location.search) {
-      const parsed = queryString.parse(location.search);
-      itemCategory = parsed.category;
-      itemDepartment = parsed.department;
-    }
-    if (
-      itemCategory !== undefined
-      && itemDepartment !== undefined
-      && products.items
-      && products.items[0]
-      && !products.items[0].Categories) {
-      return (
-        <div className="d-flex">
-          <div className="row d-flex align-item-center">
-            <Loading />
-          </div>
-        </div>
-      );
+    if (location && location.pathname && location.pathname.length > 3) {
+      const locationPath = location.pathname.split('/');
+      [itemCategory, itemDepartment] = [locationPath[2], locationPath[3]];
     }
     return (
       <div>
@@ -47,9 +30,14 @@ class ProductPageBanner extends Component {
               ) : 'All Categories'}
             </h1>
             <p className="white">
-              {itemCategory !== undefined && itemDepartment !== undefined
-                ? products.items[0].Categories[0].description
-                : 'We offer the best product at a competitive price, a trial will convince you'}
+              {
+                itemCategory !== undefined
+                && itemDepartment !== undefined
+                && products.items
+                && products.items[0]
+                && products.items[0].Categories
+                  ? products.items[0].Categories[0].description
+                  : 'We offer the best product at a competitive price, a trial will convince you'}
             </p>
           </div>
         </div>

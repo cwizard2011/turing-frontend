@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
     case SET_TOTAL_CART_ITEM_FAIL:
       return {
         ...state,
-        error: action.error
+        error: action.data
       };
     case ADD_CART_ITEM:
       return {

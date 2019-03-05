@@ -27,7 +27,7 @@ export class Search extends Component {
   handleKeyPress = (event) => {
     const { search } = this.state;
     if (event.key === 'Enter') {
-      return browserHistory.push(`/items?searchTerm=${search}`);
+      return browserHistory.push(`/items/search-result/?searchTerm=${search}`);
     }
   };
 

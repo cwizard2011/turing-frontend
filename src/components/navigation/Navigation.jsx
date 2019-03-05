@@ -40,7 +40,7 @@ class Navigation extends Component {
                 {items.Categories.map(category => (
                   (
                     <Link
-                      to={`/items?department=${items.name}&category=${category.name}`}
+                      to={`/items/${items.name}/${category.name}`}
                       key={category.id}
                     >
                       <a className="dropdown-item" href="#">{category.name}</a>

@@ -17,7 +17,7 @@ const appReducer = combineReducers({
 
 export const rootReducer = (state, action) => {
   if (action.type === 'LOGOUT_USER') {
-    state = undefined;
+    state.cart.total = null;
   }
 
   return appReducer(state, action);

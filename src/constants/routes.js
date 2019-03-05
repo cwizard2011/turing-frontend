@@ -5,7 +5,7 @@ const routes = {
   SHOPPING_CART: '/cart',
   LIST_ITEMS: '/items',
   LIST_DEPARTMENT: '/department',
-  ITEM_DETAILS: '/items/:itemId'
+  ITEM_DETAILS: '/item/:itemId'
 };
 
 export default routes;

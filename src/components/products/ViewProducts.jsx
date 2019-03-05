@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import { Helmet } from 'react-helmet';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
@@ -28,10 +29,21 @@ export class ViewProducts extends Component {
       location, getProducts
     } = this.props;
     const { itemPage } = this.state;
+    const locationPath = location.pathname.split('/');
     if (location.search) {
       const parsed = queryString.parse(location.search);
       const stringified = queryString.stringify(parsed);
       return getProducts(stringified).then((res) => {
+        this.setState({
+          itemPage: res.data.paginationMeta.currentPage,
+          totalCount: res.data.paginationMeta.totalCount,
+          pageLimit: res.data.paginationMeta.pageSize
+        });
+      });
+    } if (locationPath.length > 2) {
+      const dept = locationPath[2];
+      const cate = locationPath[3];
+      return getProducts(`department=${dept}&category=${cate}`).then((res) => {
         this.setState({
           itemPage: res.data.paginationMeta.currentPage,
           totalCount: res.data.paginationMeta.totalCount,
@@ -69,6 +81,18 @@ export class ViewProducts extends Component {
         });
       });
     }
+    if (prevProps.location.pathname !== location.pathname && location.pathname.length > 2) {
+      const locationPath = location.pathname.split('/');
+      const dept = locationPath[2];
+      const cate = locationPath[3];
+      return getProducts(`department=${dept}&category=${cate}`).then((res) => {
+        this.setState({
+          itemPage: res.data.paginationMeta.currentPage,
+          totalCount: res.data.paginationMeta.totalCount,
+          pageLimit: res.data.paginationMeta.pageSize
+        });
+      });
+    }
   }
 
   /**
@@ -77,10 +101,21 @@ export class ViewProducts extends Component {
    */
   handlePageChange = (pageNumber) => {
     const { location, getProducts } = this.props;
+    const locationPath = location.pathname.split('/');
     if (location.search) {
       const parsed = queryString.parse(location.search);
       const stringified = queryString.stringify(parsed);
       return getProducts(`${stringified}&page=${pageNumber}`).then((res) => {
+        this.setState({
+          itemPage: res.data.paginationMeta.currentPage,
+          totalCount: res.data.paginationMeta.totalCount,
+          pageLimit: res.data.paginationMeta.pageSize
+        });
+      });
+    } if (locationPath.length > 2) {
+      const dept = locationPath[2];
+      const cate = locationPath[3];
+      return getProducts(`department=${dept}&category=${cate}&page=${pageNumber}`).then((res) => {
         this.setState({
           itemPage: res.data.paginationMeta.currentPage,
           totalCount: res.data.paginationMeta.totalCount,
@@ -119,6 +154,13 @@ export class ViewProducts extends Component {
     }
     return (
       <div>
+        <Helmet>
+          <title>Tshirt Categories</title>
+          <meta name="description"
+            content="order by categories and department, french, italia, irish, christmas, valentine, animal, flower" // eslint-disable-line
+          />
+          <meta name="keywords" content="nature, seasonal, regional" />
+        </Helmet>
         <Header />
         <ProductBanner location={location} products={items} />
         <div className="container">
@@ -139,7 +181,7 @@ export class ViewProducts extends Component {
               {items.items.map(item => (
                 (
                   <div className="border-0 col-md-4 card card-body product-hover" key={item.id}>
-                    <Link to={`/items/${item.id}`}>
+                    <Link to={`/item/${item.id}`}>
                       <img
                         src={item.image}
                         className="img-fluid img-thumbnail mx-auto d-block"
@@ -156,7 +198,7 @@ export class ViewProducts extends Component {
                       </div>
                     </Link>
                     <div className="middle">
-                      <Link to={`/items/${item.id}`} className="d-flex justify-content-center">
+                      <Link to={`/item/${item.id}`} className="d-flex justify-content-center">
                         <button type="button" className="register-button buy-now">Buy Now</button>
                       </Link>
                     </div>
@@ -186,6 +228,7 @@ ViewProducts.propTypes = {
   history: PropTypes.shape({}),
   location: PropTypes.shape({
     search: PropTypes.string,
+    pathname: PropTypes.string,
   }),
   getProducts: PropTypes.func,
   items: PropTypes.shape({})

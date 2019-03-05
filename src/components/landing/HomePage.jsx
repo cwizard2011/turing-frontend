@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import LandingPageBanner from './LandingPageBanner';
 import ProductContainer from './ProductContainer';
 import Footer from './Footer';
@@ -25,6 +26,13 @@ class HomePage extends Component {
     } = this.props;
     return (
       <div>
+        <Helmet>
+          <title>Tshirt Shop</title>
+          <meta name="description"
+            content="order tshirts, buy quality tshirts, cheap and high quality tshirt"
+          />
+          <meta name="keywords" content="tshirt, shirt, vest, polo" />
+        </Helmet>
         <Header />
         <LandingPageBanner />
         <ProductContainer history={history} match={match} department={department} />

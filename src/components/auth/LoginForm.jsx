@@ -94,7 +94,7 @@ export class LoginForm extends Component {
     const { email, password, errors } = this.state;
 
     if (auth) {
-      return <Redirect to="/" />;
+      return <Redirect to="#" />;
     }
 
     return (

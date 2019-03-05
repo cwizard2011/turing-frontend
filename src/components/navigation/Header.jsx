@@ -27,9 +27,11 @@ export class Header extends Component {
       const {
         auth, getCartTotal, listDepartment
       } = this.props;
-      listDepartment();
       if (auth.isAuthenticated) {
-        getCartTotal();
+        listDepartment();
+        return getCartTotal();
+      } else {
+        return listDepartment();
       }
     }
 
@@ -42,7 +44,7 @@ export class Header extends Component {
    */
     componentDidUpdate(prevProps) {
       const { auth, getCartTotal } = this.props;
-      if (prevProps.auth.isAuthenticated !== auth.isAuthenticated) {
+      if (prevProps.auth.isAuthenticated !== auth.isAuthenticated && auth.isAuthenticated) {
         return getCartTotal();
       }
     }
@@ -105,7 +107,7 @@ export class Header extends Component {
                 <Link to={routes.SHOPPING_CART}>
                   <span
                     className="fa-stack fa-2x has-badge"
-                    data-count={cart && cart.total ? cart.total : 0}
+                    data-count={cart && cart.total && cart.total !== null ? cart.total : 0}
                   >
                     <i className="fa fa-circle fa-stack-1x fa-inverse" />
                     <i className="fa fa-shopping-cart fa-stack-1x red-cart" />
@@ -119,7 +121,7 @@ export class Header extends Component {
                 <div>
             Hi!
                   {' '}
-                  <Link to="/"
+                  <Link to="#"
                     className="auth-link"
                     onClick={showModal}
                   >
@@ -129,7 +131,7 @@ export class Header extends Component {
                   {' '}
             or
                   {' '}
-                  <Link to="/"
+                  <Link to="#"
                     className="auth-link"
                     onClick={showModalSignup}
                   >
@@ -138,13 +140,13 @@ export class Header extends Component {
                   <ModalForm modal={modal} history={history} />
                   {' '}
                 </div>
-                <Link to="/"
+                <Link to={routes.SHOPPING_CART}
                   className="auth-link"
                   onClick={showModal}
                 >
                   <span
-                    className="fa-stack fa-3x has-badge"
-                    data-count={cart && cart.total ? cart.total : 0}
+                    className="fa-stack fa-2x has-badge"
+                    data-count={cart && cart.total && cart.total >= 1 ? cart.total : 0}
                   >
                     <i className="fa fa-circle fa-stack-1x fa-inverse" />
                     <i className="fa fa-shopping-cart fa-stack-1x red-cart" />

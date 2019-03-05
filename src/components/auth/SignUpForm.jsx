@@ -95,7 +95,7 @@ export class SignUpForm extends Component {
   render() {
     const { auth } = this.props; // eslint-disable-line
     if (auth) {
-      return <Redirect to="/" />;
+      return <Redirect to="#" />;
     }
     const {
       errors, email, fullname, password, password_confirmation // eslint-disable-line

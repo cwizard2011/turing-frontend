@@ -50,7 +50,7 @@ class DealItem extends Component {
               {deal.deal.map(item => (
                 (
                   <div className={innerColumn} key={item.id}>
-                    <Link to={`/items/${item.id}`}>
+                    <Link to={`/item/${item.id}`}>
                       <img
                         src={item.image}
                         className="img-fluid img-thumbnail mx-auto d-block"

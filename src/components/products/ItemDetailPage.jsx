@@ -11,6 +11,7 @@ import { addItemToCart } from '../../actions/cart.action';
 import Modal from '../modals/Modals';
 import DealItem from '../landing/DealItem';
 import Header from '../navigation/Header';
+import AddToCartButton from './AddToCartButton';
 
 
 /**
@@ -20,8 +21,8 @@ import Header from '../navigation/Header';
  */
 export class ItemDetailPage extends Component {
   state = {
-    color: null,
-    size: null,
+    color: 'Select color',
+    size: 'Select size',
     quantity: 1,
     productId: null,
   };
@@ -104,7 +105,7 @@ export class ItemDetailPage extends Component {
    * @returns {JSX} JSX representation of component
    */
   render() {
-    const { items, modal } = this.props;
+    const { items, modal, auth } = this.props;
     const { color, size, quantity } = this.state;
     if (items && !items.item) {
       return (
@@ -274,19 +275,17 @@ export class ItemDetailPage extends Component {
                     }
                 />
               </div>
-              <div>
-                <button
-                  type="button"
-                  className="register-button mt-4"
-                  onClick={this.handleAddToCart}
-                  disabled={
-                      color === null
-                      || size === null
-                  }
-                >
-                    Add to cart
-                </button>
-              </div>
+              {
+                auth.isAuthenticated
+                  ? (
+                    <AddToCartButton
+                      color={color}
+                      size={size}
+                      handleAddToCart={this.handleAddToCart}
+                    />
+                  )
+                  : <span className="price mt-4">Login or signup to add item to cart</span>
+              }
               <Modal modal={modal} itemName={items.item.name} />
             </div>
           </div>
@@ -323,10 +322,12 @@ ItemDetailPage.propTypes = {
   }),
   addToCart: PropTypes.func,
   showModal: PropTypes.func,
-  getSingleProduct: PropTypes.func
+  getSingleProduct: PropTypes.func,
+  auth: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
+  auth: state.auth,
   items: state.product,
   modal: state.modal
 });
