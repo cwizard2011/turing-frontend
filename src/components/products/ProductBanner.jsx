@@ -29,7 +29,7 @@ class ProductPageBanner extends Component {
                 `${itemDepartment} >> ${itemCategory}`
               ) : 'All Categories'}
             </h1>
-            <p className="white">
+            <p className="white text-justify">
               {
                 itemCategory !== undefined
                 && itemDepartment !== undefined

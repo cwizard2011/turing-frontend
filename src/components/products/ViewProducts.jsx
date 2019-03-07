@@ -197,7 +197,7 @@ export class ViewProducts extends Component {
                         </span>
                       </div>
                     </Link>
-                    <div className="middle">
+                    <div className="middle hidden">
                       <Link to={`/item/${item.id}`} className="d-flex justify-content-center">
                         <button type="button" className="register-button buy-now">Buy Now</button>
                       </Link>

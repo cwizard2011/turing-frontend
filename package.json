@@ -72,6 +72,7 @@
     "react-js-pagination": "^3.0.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
+    "react-stepzilla": "^5.0.0",
     "react-tagsinput": "^3.19.0",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",

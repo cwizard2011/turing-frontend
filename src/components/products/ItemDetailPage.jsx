@@ -119,7 +119,6 @@ export class ItemDetailPage extends Component {
     return (
       <div>
         <Header />
-        <hr className="my-0 nav-divider" />
         <div className="container shadow-lg d-flex justify-content-center mt-3 mb-3">
           <div className="row w-75 p-3 justify-content-center">
             <div className="col-md-6">
@@ -178,7 +177,7 @@ export class ItemDetailPage extends Component {
               </div>
             </div>
             <div className="col-md-6 d-flex flex-column">
-              <div>
+              <div className="hidden">
                 <ul className="navbar-nav mx-auto link-text d-flex flex-row">
                   <Link to="/" className="ash"><li className="nav-item mr-4">Home</li></Link>
                   <Link to="/items" className="ash">
@@ -189,7 +188,7 @@ export class ItemDetailPage extends Component {
                 </ul>
               </div>
               <h2 className="d-flex mt-4">{items.item.name}</h2>
-              <p>{items.item.description}</p>
+              <p className="text-justify">{items.item.description}</p>
               <h2 className="d-flex price font-weight-bold">
                 $
                 {items.item.price}
@@ -271,7 +270,7 @@ export class ItemDetailPage extends Component {
                   onClick={this.handlePlus}
                   value="+"
                   disabled={
-                        quantity === 10
+                        quantity === 5
                     }
                 />
               </div>
@@ -290,7 +289,7 @@ export class ItemDetailPage extends Component {
             </div>
           </div>
         </div>
-        <div className="container mb-3">
+        <div className="container mb-3 hidden">
           <div className="row main-content">
             <div className="col-md-12 d-flex">
               <DealItem
@@ -317,13 +316,13 @@ ItemDetailPage.propTypes = {
   modal: PropTypes.shape({}),
   match: PropTypes.shape({
     params: PropTypes.shape({
-      itemId: PropTypes.number
+      itemId: PropTypes.string
     })
   }),
   addToCart: PropTypes.func,
   showModal: PropTypes.func,
   getSingleProduct: PropTypes.func,
-  auth: PropTypes.bool
+  auth: PropTypes.shape({})
 };
 
 const mapStateToProps = state => ({

@@ -22,6 +22,7 @@ export const getCartItem = () => dispatch => axios.get(
       cart: res.data.items,
       total: res.data.totalItems
     });
+    return res;
   }).catch((error) => {
     dispatch(cartError({
       status: error.response.status,
@@ -48,3 +49,43 @@ export const addItemToCart = itemDetails => (dispatch) => {
       });
     });
 };
+
+export const updateCartQuantity = (id, itemDetails) => (dispatch) => {
+  const item = {
+    cart: {
+      quantity: itemDetails
+    }
+  };
+  return axios.put(
+    `${config.apiUrl}${routes.SHOPPING_CART}/${id}`,
+    item
+  )
+    .then((res) => {
+      dispatch({
+        type: actionTypes.UPDATE_CART_ITEM,
+        cart: res.data.updatedItem.item,
+        total: res.data.totalItems
+      });
+    }).catch((error) => {
+      dispatch({
+        type: actionTypes.UPDATE_CART_ITEM_FAIL,
+        error: error.response
+      });
+    });
+};
+
+export const deleteCart = id => dispatch => axios.delete(
+  `${config.apiUrl}${routes.SHOPPING_CART}/${id}`
+)
+  .then((res) => {
+    dispatch({
+      type: actionTypes.DELETE_CART_ITEM,
+      cart: res.data.updatedItem.item,
+      total: res.data.totalItems
+    });
+  }).catch((error) => {
+    dispatch({
+      type: actionTypes.DELETE_CART_ITEM_FAIL,
+      error: error.response
+    });
+  });

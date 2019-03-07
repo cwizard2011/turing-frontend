@@ -155,6 +155,7 @@ export class Header extends Component {
               </div>
             )}
           </nav>
+          <hr className="my-0 nav-divider" />
         </div>
       );
     }

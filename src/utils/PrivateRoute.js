@@ -10,7 +10,7 @@ const PrivateRoute = ({
   ...rest
 }) => {
   if (!auth) {
-    return toastr.error('Please login');
+    toastr.error('Please login');
   }
   return (
     <Route
