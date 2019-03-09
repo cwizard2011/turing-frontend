@@ -19,14 +19,14 @@ export const getCartItem = () => dispatch => axios.get(
   .then((res) => {
     dispatch({
       type: actionTypes.SET_TOTAL_CART_ITEM,
-      cart: res.data.items,
+      cart: res.data,
       total: res.data.totalItems
     });
     return res;
   }).catch((error) => {
     dispatch(cartError({
-      status: error.response.status,
-      data: error.response.data
+      status: error.response,
+      data: error.response
     }));
   });
 
@@ -45,7 +45,7 @@ export const addItemToCart = itemDetails => (dispatch) => {
     }).catch((error) => {
       dispatch({
         type: actionTypes.ADD_CART_ITEM_FAIL,
-        error: error.response.data
+        error: error.response
       });
     });
 };

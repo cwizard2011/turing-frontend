@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 import Loading from '../common/Loading';
 import Footer from '../landing/Footer';
 import { getSingeItem } from '../../actions/products.action';
-import { showCartModal } from '../../actions/modal.action';
+import {
+  showCartModal,
+  showLoginModal,
+  showSignupModal
+} from '../../actions/modal.action';
 import { addItemToCart } from '../../actions/cart.action';
 import Modal from '../modals/Modals';
 import DealItem from '../landing/DealItem';
@@ -105,7 +109,9 @@ export class ItemDetailPage extends Component {
    * @returns {JSX} JSX representation of component
    */
   render() {
-    const { items, modal, auth } = this.props;
+    const {
+      items, modal, auth, showModalSignup, showModalLogin
+    } = this.props;
     const { color, size, quantity } = this.state;
     if (items && !items.item) {
       return (
@@ -117,7 +123,7 @@ export class ItemDetailPage extends Component {
       );
     }
     return (
-      <div>
+      <React.Fragment>
         <Header />
         <div className="container shadow-lg d-flex justify-content-center mt-3 mb-3">
           <div className="row w-75 p-3 justify-content-center">
@@ -283,7 +289,19 @@ export class ItemDetailPage extends Component {
                       handleAddToCart={this.handleAddToCart}
                     />
                   )
-                  : <span className="price mt-4">Login or signup to add item to cart</span>
+                  : (
+                    <span className="price mt-4">
+                      <Link className="price" to="#" onClick={showModalLogin}>Login </Link>
+                      <Modal modal={modal} />
+                      or
+                      {' '}
+                      <Link className="price" to="#" onClick={showModalSignup}>Signup</Link>
+                      {' '}
+                      <Modal modal={modal} />
+                      to add item to cart
+
+                    </span>
+                  )
               }
               <Modal modal={modal} itemName={items.item.name} />
             </div>
@@ -301,12 +319,14 @@ export class ItemDetailPage extends Component {
           </div>
         </div>
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }
 
 ItemDetailPage.propTypes = {
+  showModalSignup: PropTypes.func,
+  showModalLogin: PropTypes.func,
   department: PropTypes.shape({}),
   history: PropTypes.shape({}),
   location: PropTypes.shape({
@@ -334,7 +354,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   getSingleProduct: getSingeItem,
   showModal: showCartModal,
-  addToCart: addItemToCart
+  addToCart: addItemToCart,
+  showModalLogin: showLoginModal,
+  showModalSignup: showSignupModal,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetailPage);

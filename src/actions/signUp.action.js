@@ -62,6 +62,6 @@ export const userSignUpRequest = userData => (dispatch) => {
       return true;
     }
   ).catch((error) => {
-    dispatch(signUpError(error.response.data));
+    dispatch(signUpError(error.response));
   });
 };

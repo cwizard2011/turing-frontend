@@ -36,7 +36,7 @@ class DealOfDay extends Component {
         );
       }
       return (
-        <div>
+        <React.Fragment>
           <div className="row main-content">
             <div className="col-md-12 d-flex">
               <DealItem
@@ -46,7 +46,7 @@ class DealOfDay extends Component {
               />
             </div>
           </div>
-        </div>
+        </React.Fragment>
       );
     }
 }

@@ -4,7 +4,9 @@ import {
   SHOW_LOGIN_MODAL,
   HIDE_LOGIN_MODAL,
   SHOW_CART_MODAL,
-  HIDE_CART_MODAL
+  HIDE_CART_MODAL,
+  SHOW_CHECKOUT_MODAL,
+  HIDE_CHECKOUT_MODAL
 } from './types';
 
 export const showSignupModal = () => dispatch => dispatch({
@@ -29,4 +31,12 @@ export const showCartModal = () => dispatch => dispatch({
 
 export const hideCartModal = () => dispatch => dispatch({
   type: HIDE_CART_MODAL
+});
+
+export const showCheckoutModal = () => dispatch => dispatch({
+  type: SHOW_CHECKOUT_MODAL
+});
+
+export const hideCheckoutModal = () => dispatch => dispatch({
+  type: HIDE_CHECKOUT_MODAL
 });

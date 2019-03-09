@@ -91,6 +91,17 @@ button {
     font-family: 'Montserrat';
 }
 
+.hover-blue :hover {
+    color: $sky-blue
+}
+
+.left-text {
+    text-align: left !important
+}
+
+.right-text {
+    text-align: right !important
+}
 .footer {
     background-color: $ash;
     left: 0;

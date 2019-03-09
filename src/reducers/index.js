@@ -5,6 +5,7 @@ import cart from './cart';
 import product from './product';
 import department from './department';
 import deal from './deal';
+import profile from './profile';
 
 const appReducer = combineReducers({
   auth,
@@ -12,7 +13,8 @@ const appReducer = combineReducers({
   cart,
   product,
   department,
-  deal
+  deal,
+  profile
 });
 
 export const rootReducer = (state, action) => {

@@ -28,7 +28,7 @@ class ProductContainer extends Component {
       );
     }
     return (
-      <div>
+      <React.Fragment>
         <FeaturedCategories department={department} />
         <DealOfDay title="Deal of the Day" />
         <div className="row">
@@ -52,7 +52,7 @@ class ProductContainer extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

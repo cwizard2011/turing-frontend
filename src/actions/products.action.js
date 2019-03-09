@@ -46,8 +46,8 @@ export const getItems = (params = null) => dispatch => axios.get(
     return res;
   }).catch((error) => {
     dispatch(getItemDepartmentError({
-      status: error.response.status,
-      data: error.response.data
+      status: error.response,
+      data: error.response
     }));
   });
 
@@ -62,7 +62,7 @@ export const getSingeItem = itemId => dispatch => axios.get(
   }).catch((error) => {
     dispatch({
       type: actionTypes.GET_SINGLE_ITEM_FAIL,
-      data: error.response.data
+      data: error.response
     });
   });
 
@@ -76,8 +76,8 @@ export const getDepartments = () => dispatch => axios.get(
     });
   }).catch((error) => {
     dispatch(getAllDepartmentError({
-      status: error.response.status,
-      data: error.response.data
+      status: error.response,
+      data: error.response
     }));
   });
 
@@ -91,7 +91,7 @@ export const getDeal = () => dispatch => axios.get(
     });
   }).catch((error) => {
     dispatch(getDealOfDayError({
-      status: error.response.status,
-      data: error.response.data
+      status: error.response,
+      data: error.response
     }));
   });

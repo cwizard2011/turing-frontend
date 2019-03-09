@@ -7,6 +7,7 @@ import SignUpInputValidation from '../../validations/SignUpInputValidate';
 import ErrorAlertNotification from '../common/ErrorAlertNotification';
 import { userSignUpRequest, deleteErrorMessage } from '../../actions/signUp.action';
 import browserHistory from '../../utils/history';
+import Loading from '../common/Loading';
 
 
 /**
@@ -65,12 +66,11 @@ export class SignUpForm extends Component {
     event.preventDefault();
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
-      const { signUp, userProfile } = this.props;
-      const { username } = this.state;
+      const { signUp } = this.props;
       signUp(this.state)
         .then(() => {
-          userProfile(username);
           browserHistory.pushState('/items');
+          this.setState({ isLoading: false });
         });
     }
   }
@@ -93,13 +93,22 @@ export class SignUpForm extends Component {
    * @returns {*} - state
    */
   render() {
-    const { auth } = this.props; // eslint-disable-line
+    const { auth } = this.props;
+    const {
+      errors, email, fullname, password, password_confirmation, isLoading // eslint-disable-line
+    } = this.state;
     if (auth) {
       return <Redirect to="#" />;
     }
-    const {
-      errors, email, fullname, password, password_confirmation // eslint-disable-line
-    } = this.state;
+    if (isLoading) {
+      return (
+        <div className="d-flex">
+          <div className="row d-flex justify-content-center">
+            <Loading />
+          </div>
+        </div>
+      );
+    }
 
     const { error } = this.props; // eslint-disable-line
 
@@ -189,7 +198,6 @@ export class SignUpForm extends Component {
 SignUpForm.propTypes = {
   signUp: PropTypes.func.isRequired,
   deleteError: PropTypes.func.isRequired,
-  userProfile: PropTypes.func,
   error: PropTypes.shape({}),
   history: PropTypes.shape({}),
   auth: PropTypes.bool

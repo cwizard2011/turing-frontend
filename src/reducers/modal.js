@@ -4,7 +4,9 @@ import {
   SHOW_LOGIN_MODAL,
   HIDE_LOGIN_MODAL,
   SHOW_CART_MODAL,
-  HIDE_CART_MODAL
+  HIDE_CART_MODAL,
+  SHOW_CHECKOUT_MODAL,
+  HIDE_CHECKOUT_MODAL
 } from '../actions/types';
 
 const initialState = {
@@ -38,6 +40,15 @@ export default (state = initialState, action) => {
     };
 
     case HIDE_CART_MODAL: return {
+      ...state,
+      current: null
+    };
+    case SHOW_CHECKOUT_MODAL: return {
+      ...state,
+      current: 'checkout'
+    };
+
+    case HIDE_CHECKOUT_MODAL: return {
       ...state,
       current: null
     };

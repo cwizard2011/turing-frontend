@@ -153,7 +153,7 @@ export class ViewProducts extends Component {
       );
     }
     return (
-      <div>
+      <React.Fragment>
         <Helmet>
           <title>Tshirt Categories</title>
           <meta name="description"
@@ -164,18 +164,6 @@ export class ViewProducts extends Component {
         <Header />
         <ProductBanner location={location} products={items} />
         <div className="container">
-          <Pagination
-            activePage={itemPage}
-            itemsCountPerPage={pageLimit}
-            totalItemsCount={totalCount}
-            pageRangeDisplayed={5}
-            onChange={this.handlePageChange}
-            activeClass="page-item active"
-            hideDisabled
-            itemClass="page-item"
-            innerClass="pagination justify-content-center"
-            linkClass="page-link"
-          />
           <div className="row main-content">
             <div className="col-md-9 d-flex flex-wrap">
               {items.items.map(item => (
@@ -205,6 +193,18 @@ export class ViewProducts extends Component {
                   </div>
                 )
               ))}
+              <Pagination
+                activePage={itemPage}
+                itemsCountPerPage={pageLimit}
+                totalItemsCount={totalCount}
+                pageRangeDisplayed={5}
+                onChange={this.handlePageChange}
+                activeClass="page-item active"
+                hideDisabled
+                itemClass="page-item"
+                innerClass="pagination justify-content-center text"
+                linkClass="page-link"
+              />
             </div>
             <div className="col-md-3">
               <div className="row d-flex flex-wrap flex-direction-column">
@@ -219,7 +219,7 @@ export class ViewProducts extends Component {
           </div>
         </div>
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

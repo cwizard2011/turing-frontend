@@ -4,7 +4,7 @@ import routes from '../constants/routes';
 import HomePage from '../components/landing/HomePage';
 import ItemDetailPage from '../components/products/ItemDetailPage';
 import ViewProducts from '../components/products/ViewProducts';
-import CartTable from '../components/shoppingcart/CartTable'
+import CartTable from '../components/shoppingcart/CartTable';
 import PrivateRoute from '../utils/PrivateRoute';
 
 const AppRoutes = () => (

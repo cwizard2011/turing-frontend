@@ -13,7 +13,7 @@ class LandingPageBanner extends Component {
    */
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div id="carouselIndicators" className="carousel" data-ride="carousel">
           <div className="d-flex flex-column" />
           <div className="carousel-inner">
@@ -23,7 +23,7 @@ class LandingPageBanner extends Component {
             </h3>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

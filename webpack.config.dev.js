@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config({ path: '.env' });
 
 module.exports = {
   entry: './src/index.js',
@@ -36,11 +38,16 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss'],
   },
+  mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.STRIPE_PUBLISHABLE_KEY': JSON.stringify(process.env.STRIPE_PUBLISHABLE_KEY)
+    })
   ],
   devServer: {
     historyApiFallback: true,

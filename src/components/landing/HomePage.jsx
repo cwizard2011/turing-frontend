@@ -25,7 +25,7 @@ class HomePage extends Component {
       department,
     } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Helmet>
           <title>Tshirt Shop</title>
           <meta name="description"
@@ -37,7 +37,7 @@ class HomePage extends Component {
         <LandingPageBanner />
         <ProductContainer history={history} match={match} department={department} />
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

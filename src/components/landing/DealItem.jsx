@@ -41,7 +41,7 @@ class DealItem extends Component {
         );
       }
       return (
-        <div>
+        <React.Fragment>
           <div className="shadow-lg border-0 card p-3 p-lg-4">
             <div className="card-header product-header">
               <h3 className="product-header">{title}</h3>
@@ -72,7 +72,7 @@ class DealItem extends Component {
               ))}
             </div>
           </div>
-        </div>
+        </React.Fragment>
       );
     }
 }

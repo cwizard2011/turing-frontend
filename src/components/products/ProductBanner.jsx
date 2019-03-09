@@ -22,24 +22,22 @@ class ProductPageBanner extends Component {
     }
     return (
       <div>
-        <div>
-          <div className="jumbotron jumbotron-background">
-            <h1 className="white">
-              {itemCategory !== undefined && itemDepartment !== undefined ? (
-                `${itemDepartment} >> ${itemCategory}`
-              ) : 'All Categories'}
-            </h1>
-            <p className="white text-justify">
-              {
-                itemCategory !== undefined
-                && itemDepartment !== undefined
-                && products.items
-                && products.items[0]
-                && products.items[0].Categories
-                  ? products.items[0].Categories[0].description
-                  : 'We offer the best product at a competitive price, a trial will convince you'}
-            </p>
-          </div>
+        <div className="jumbotron jumbotron-background">
+          <h1 className="white">
+            {itemCategory !== undefined && itemDepartment !== undefined ? (
+              `${itemDepartment} >> ${itemCategory}`
+            ) : 'All Categories'}
+          </h1>
+          <p className="white text-justify">
+            {
+              itemCategory !== undefined
+              && itemDepartment !== undefined
+              && products.items
+              && products.items[0]
+              && products.items[0].Categories
+                ? products.items[0].Categories[0].description
+                : 'We offer the best product at a competitive price, a trial will convince you'}
+          </p>
         </div>
       </div>
     );

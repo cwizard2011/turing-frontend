@@ -147,7 +147,9 @@
   text-align: center;
   margin: auto auto
 }
-
+.hide-desktop {
+  visibility: hidden;
+}
 @media(min-width: 320px) and (max-width: 760px) {
     .categories {
         display: flex;
@@ -155,5 +157,8 @@
     }
     .hidden {
       display: none;
+    }
+    .hide-desktop {
+      visibility: visible
     }
 }

@@ -8,6 +8,8 @@ import Footer from '../landing/Footer';
 import DealItem from '../landing/DealItem';
 import { getCartItem, updateCartQuantity, deleteCart } from '../../actions/cart.action';
 import Loading from '../common/Loading';
+import CheckoutModal from '../modals/CheckoutModal';
+import { showCheckoutModal } from '../../actions/modal.action';
 
 /**
  * @description Shopping Cart
@@ -128,9 +130,11 @@ class CartTable extends Component {
                                 {' '}
                               </td>
                               <td>
-                                <p>
-                                  {item.Product.name}
-                                </p>
+                                <Link className="hover-blue" to={`/item/${item.Product.id}`}>
+                                  <p>
+                                    {item.Product.name}
+                                  </p>
+                                </Link>
                                 <p>
                                   <input
                                     name={item.id}
@@ -152,7 +156,7 @@ class CartTable extends Component {
                                     value={item.quantity}
                                     onChange={this.handleQuantityChange}
                                   >
-                                    <option selected />
+                                    <option defaultValue />
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -222,7 +226,7 @@ class CartTable extends Component {
                 <div className="col mb-2 grey-background pt-3 pb-3">
                   <div className="col mb-2">
                     <div className="row">
-                      <div className="col-sm-12  col-md-6">
+                      <div className="col-sm-6  col-md-6">
                         <Link to="/items">
                           <button
                             type="button"
@@ -233,13 +237,16 @@ class CartTable extends Component {
                           </button>
                         </Link>
                       </div>
-                      <div className="col-sm-12 col-md-6 text-right">
+                      <div className="col-sm-6 col-md-6">
                         <button
+                          data-toggle="modal"
+                          data-target="#exampleModalLong"
                           type="button"
                           className="btn btn-block text-uppercase checkout"
                         >
                     Checkout
                         </button>
+                        <CheckoutModal />
                       </div>
                     </div>
                   </div>
@@ -247,9 +254,20 @@ class CartTable extends Component {
               </div>
             </div>
           ) : (
-            <div className="container mb-3 hidden">
+            <div className="container mb-3">
               <div className="row main-content">
                 <h3 className="mx-auto">{userCart.message}</h3>
+              </div>
+              <div className="container mb-3 hide-desktop">
+                <div className="row main-content">
+                  <div className="col-md-12 d-flex">
+                    <DealItem
+                      title="These items are specially selected for you"
+                      mainRow="row card-body"
+                      innerColumn="col-md-2 d-flex"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -274,17 +292,20 @@ class CartTable extends Component {
 CartTable.propTypes = {
   getUserCart: PropTypes.func,
   updateCart: PropTypes.func,
-  deleteCartItem: PropTypes.func
+  deleteCartItem: PropTypes.func,
+  modal: PropTypes.shape({}),
 };
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart,
+  modal: state.modal
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getUserCart: getCartItem,
   updateCart: updateCartQuantity,
-  deleteCartItem: deleteCart
+  deleteCartItem: deleteCart,
+  showModal: showCheckoutModal,
 }, dispatch);
 
 

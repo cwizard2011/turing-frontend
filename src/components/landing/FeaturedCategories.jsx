@@ -28,33 +28,35 @@ export class FeaturedCategories extends Component {
       );
     }
     return (
-      <div className="row main-content">
-        <div className="col-md-12 card-group">
-          <div className="shadow-lg border-0 card p-3 p-lg-4">
-            <div className="card-header">
-              <h3>Featured Categories</h3>
-            </div>
-            <div className="row card-body categories container">
-              {department.department.map(items => items.Categories.map(category => (
-                (
-                  <div className="col-md-2 d-flex justify-content-sm-around" key={category.id}>
-                    <Link to={`/items?department=${items.name}&category=${category.name}`}>
-                      <img
-                        src={category.Products[1].image}
-                        className="img-fluid img-thumbnail mx-auto d-block"
-                        alt=""
-                      />
-                      <p className="d-flex justify-content-center">
-                        {category.name}
-                      </p>
-                    </Link>
-                  </div>
-                )
-              )))}
+      <React.Fragment>
+        <div className="row main-content">
+          <div className="col-md-12 card-group">
+            <div className="shadow-lg border-0 card p-3 p-lg-4">
+              <div className="card-header">
+                <h3>Featured Categories</h3>
+              </div>
+              <div className="row card-body categories container">
+                {department.department.map(items => items.Categories.map(category => (
+                  (
+                    <div className="col-md-2 d-flex justify-content-sm-around" key={category.id}>
+                      <Link to={`/items?department=${items.name}&category=${category.name}`}>
+                        <img
+                          src={category.Products[1].image}
+                          className="img-fluid img-thumbnail mx-auto d-block"
+                          alt=""
+                        />
+                        <p className="d-flex justify-content-center">
+                          {category.name}
+                        </p>
+                      </Link>
+                    </div>
+                  )
+                )))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -34,7 +34,7 @@ const loginAction = userDetails => (dispatch) => {
       return true;
     })
     .catch((error) => {
-      dispatch(setCurrentUserError(error.response.data));
+      dispatch(setCurrentUserError(error.response));
     });
 };
 
