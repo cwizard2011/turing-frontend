@@ -294,6 +294,7 @@ CartTable.propTypes = {
   updateCart: PropTypes.func,
   deleteCartItem: PropTypes.func,
   modal: PropTypes.shape({}),
+  cart: PropTypes.shape({})
 };
 
 const mapStateToProps = state => ({

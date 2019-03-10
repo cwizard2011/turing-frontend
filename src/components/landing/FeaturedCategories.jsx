@@ -39,7 +39,7 @@ export class FeaturedCategories extends Component {
                 {department.department.map(items => items.Categories.map(category => (
                   (
                     <div className="col-md-2 d-flex justify-content-sm-around" key={category.id}>
-                      <Link to={`/items?department=${items.name}&category=${category.name}`}>
+                      <Link to={`/items/${items.name}/${category.name}`}>
                         <img
                           src={category.Products[1].image}
                           className="img-fluid img-thumbnail mx-auto d-block"

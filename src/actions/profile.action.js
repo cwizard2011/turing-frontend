@@ -23,7 +23,6 @@ export const updateUserProfile = update => (dispatch) => {
   const userInfo = {
     user: update
   };
-  console.log(update);
   return axios.put(
     `${config.apiUrl}/users`, userInfo
   )

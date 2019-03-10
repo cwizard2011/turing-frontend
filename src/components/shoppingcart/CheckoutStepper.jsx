@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import DeliveryInfoForm from './DeliveryInfoForm';
 import OrderSummary from './OrderSummary';
 import Loading from '../common/Loading';
+import Payments from './Payments';
+import OrderConfirmation from './OrderConfimation';
 
 const styles = theme => ({
   root: {
@@ -61,11 +63,13 @@ class CheckoutStepper extends React.Component {
       zipCode,
       error,
       cart,
+      payed,
       handleDelete,
       handleCountryChange,
       handleShippingRegionChange,
       handleOnChange,
-      handleShippingIdChange
+      handleShippingIdChange,
+      onToken
     } = this.props;
     switch (stepIndex) {
       case 0:
@@ -104,6 +108,16 @@ class CheckoutStepper extends React.Component {
             zipCode={zipCode}
             shippingId={shippingId}
             shippings={shippings}
+          />
+        );
+      case 2:
+        return (
+          <Payments
+            cart={cart}
+            shippingId={shippingId}
+            shippings={shippings}
+            onToken={onToken}
+            payed={payed}
           />
         );
       default:
@@ -149,20 +163,13 @@ class CheckoutStepper extends React.Component {
     }));
   };
 
-  handleReset = () => {
-    this.setState({
-      activeStep: 0,
-    });
-  };
-
   /**
    * @returns {*} returns jsx
    */
   render() {
-    const { classes } = this.props;
+    const { classes, payed } = this.props;
     const steps = this.getSteps();
     const { activeStep, error, isLoading } = this.state;
-
     if (isLoading) {
       return (
         <div className="d-flex">
@@ -194,10 +201,9 @@ class CheckoutStepper extends React.Component {
         </Stepper>
         <div style={{ color: '#F62F5E' }}>{error}</div>
         <div>
-          {activeStep === steps.length ? (
+          {activeStep === steps.length - 2 && payed ? (
             <div>
-              <Typography className={classes.instructions}>All steps completed</Typography>
-              <Button onClick={this.handleReset}>Reset</Button>
+              <Typography className={classes.instructions}><OrderConfirmation /></Typography>
             </div>
           ) : (
             <div>
@@ -208,10 +214,9 @@ class CheckoutStepper extends React.Component {
               </Typography>
               <div className="d-flex p-2 justify-content-around">
                 <Button
-                  disabled={activeStep === 0}
                   onClick={this.handleBack}
                   style={{
-                    color: '#F62F5E', backgroundColor: '#F7F7F7', 'border-radius': '20px', padding: '8px 16px', width: '120px' // eslint-disable-line
+                    visibility: (activeStep === 2 && payed === true) || activeStep === 0 ? 'hidden' : 'visible', color: '#F62F5E', backgroundColor: '#F7F7F7', 'border-radius': '20px', padding: '8px 16px', width: '120px' // eslint-disable-line
                   }}
                 >
                   Back
@@ -221,7 +226,7 @@ class CheckoutStepper extends React.Component {
                   color="primary"
                   onClick={this.handleNext}
                   style={{
-                    color: '#F7F7F7', backgroundColor: '#F62F5E', 'border-radius': '20px', padding: '8px 16px', width: '120px' // eslint-disable-line
+                    visibility: activeStep === 2 && payed === false ? 'hidden' : 'visible', color: '#F7F7F7', backgroundColor: '#F62F5E', 'border-radius': '20px', padding: '8px 16px', width: '120px' // eslint-disable-line
                   }}
                 >
                   {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
@@ -258,7 +263,9 @@ CheckoutStepper.propTypes = {
   handleShippingRegionChange: PropTypes.func,
   handleOnChange: PropTypes.func,
   handleShippingIdChange: PropTypes.func,
-  updateProfile: PropTypes.func
+  updateProfile: PropTypes.func,
+  onToken: PropTypes.func,
+  payed: PropTypes.bool
 };
 
 export default withStyles(styles)(CheckoutStepper);

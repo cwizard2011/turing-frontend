@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Editor component should render View Products correctly 1`] = `
+<div>
+  <button
+    className="register-button mt-4"
+    disabled={false}
+    type="button"
+  >
+    Add to cart
+  </button>
+</div>
+`;

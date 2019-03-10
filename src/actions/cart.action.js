@@ -3,13 +3,9 @@ import config from '../config';
 import * as actionTypes from './types';
 import routes from '../constants/routes';
 
-export const getCartSuccess = cart => ({
-  type: actionTypes.SET_TOTAL_CART_ITEM,
-  cart
-});
 
 export const cartError = error => ({
-  type: actionTypes.SET_CURRENT_USER_FAIL,
+  type: actionTypes.SET_TOTAL_CART_ITEM_FAIL,
   error
 });
 
@@ -88,4 +84,21 @@ export const deleteCart = id => dispatch => axios.delete(
       type: actionTypes.DELETE_CART_ITEM_FAIL,
       error: error.response
     });
+  });
+
+export const checkout = stripeToken => dispatch => axios.post(
+  `${config.apiUrl}/checkout`, stripeToken
+)
+  .then((res) => {
+    dispatch({
+      type: actionTypes.SET_TOTAL_CART_ITEM,
+      cart: res.data,
+      total: res.data.totalItems
+    });
+    return res;
+  }).catch((error) => {
+    dispatch(cartError({
+      status: error.response,
+      data: error.response
+    }));
   });

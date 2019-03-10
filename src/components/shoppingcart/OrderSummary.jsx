@@ -50,7 +50,9 @@ export default class OrderSummary extends Component {
                             <td>{item.quantity}</td>
                             <td>
                             $
-                              {item.quantity * item.Product.price}
+                              {Math.round(
+                                ((item.quantity * item.Product.price) * 100) / 100
+                              ).toFixed(2)}
                             </td>
                           </tr>
                         )
@@ -100,7 +102,7 @@ export default class OrderSummary extends Component {
               {cart && cart.subTotal ? (
                 <span>
             SubTotal: $
-                  {cart.subTotal}
+                  {Math.round((cart.subTotal * 100) / 100).toFixed(2)}
                 </span>
               ) : ''}
 

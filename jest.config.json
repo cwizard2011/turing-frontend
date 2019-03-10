@@ -1,0 +1,21 @@
+{
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/src/tests/setupTests.js"
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{jsx}",
+      "src/**/*.{js}",
+      "!**/src/utils/**",
+      "!**/src/app.jsx",
+      "!**/src/store/configureStore.js",
+      "!**/index.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(gif|ttf|eot|svg|png|jpg|jpeg|css|sass|scss)$": "<rootDir>./src/tests/__mock__/fileMock.js"
+    }
+  }

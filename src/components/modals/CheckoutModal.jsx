@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { hideCheckoutModal } from '../../actions/modal.action';
 import CheckoutStepper from '../shoppingcart/CheckoutStepper';
 import SignUpInputValidation from '../../validations/SignUpInputValidate';
 import {
@@ -11,7 +10,7 @@ import {
   getRegionList,
   updateUserProfile
 } from '../../actions/profile.action';
-
+import { checkout } from '../../actions/cart.action';
 
 /**
    * @class Modal
@@ -34,7 +33,8 @@ export class CheckoutModal extends React.Component {
     shippings: null,
     errors: {},
     error: {},
-    update: false
+    update: false,
+    payed: false,
   };
 
   componentDidMount = () => {
@@ -139,6 +139,26 @@ export class CheckoutModal extends React.Component {
     }
   }
 
+  /**
+   * @param {*} token
+   * @returns {*} jsx
+   */
+  onToken = (token) => {
+    const { handleToken } = this.props;
+    const { shippingId } = this.state;
+    this.setState({
+      payed: true,
+    });
+    const body = {
+      shippingId,
+      stripeToken: token.id,
+      stripeEmail: token.email
+    };
+    handleToken(body).then(() => {
+
+    });
+  }
+
   closeModal = () => {
     const { hideModalCheckout } = this.props;
     hideModalCheckout();
@@ -179,7 +199,8 @@ export class CheckoutModal extends React.Component {
       shippings,
       shippingId,
       zipCode,
-      error
+      error,
+      payed
     } = this.state;
     const { cart, updateProfile } = this.props;
     return (
@@ -190,6 +211,7 @@ export class CheckoutModal extends React.Component {
         role="dialog"
         aria-labelledby="exampleModalLongTitle"
         aria-hidden="true"
+        style={{ overlay: { backgroundColor: 'rgba(0,0,0,0)' } }}
       >
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
@@ -223,6 +245,8 @@ export class CheckoutModal extends React.Component {
                 updateProfile={updateProfile}
                 cart={cart}
                 shippingId={shippingId}
+                onToken={this.onToken}
+                payed={payed}
               />
             </div>
           </div>
@@ -238,6 +262,7 @@ CheckoutModal.propTypes = {
   getCountries: PropTypes.func,
   getRegions: PropTypes.func,
   updateProfile: PropTypes.func,
+  handleToken: PropTypes.func,
   cart: PropTypes.shape({})
 };
 
@@ -246,11 +271,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  hideModalCheckout: hideCheckoutModal,
   getUserInfo: getUserProfile,
   getCountries: getCountryList,
   getRegions: getRegionList,
-  updateProfile: updateUserProfile
+  updateProfile: updateUserProfile,
+  handleToken: checkout,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutModal);
