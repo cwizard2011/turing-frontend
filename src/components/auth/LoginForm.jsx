@@ -116,13 +116,13 @@ export class LoginForm extends Component {
         <div className="card border-0">
           <div>
             <small className="form-text login-label">
-              Welcome to Shopmate
+              Welcome to TshirtShop
             </small>
           </div>
           <div className="card-body">
             {!isEmpty(error) && (
               <ErrorAlertNotification
-                errors={error.message}
+                errors={error.data.message}
                 onClick={this.handleDelete}
               />
             )}

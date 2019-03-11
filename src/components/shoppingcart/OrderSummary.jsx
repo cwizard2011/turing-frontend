@@ -91,7 +91,7 @@ export default class OrderSummary extends Component {
               {cart && cart.totalDiscount ? (
                 <span>
             Discount: $
-                  {cart.totalDiscount}
+                  {Math.round((cart.totalDiscount * 100) / 100).toFixed(2)}
                 </span>
               ) : ''}
 

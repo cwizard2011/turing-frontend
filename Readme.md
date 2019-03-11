@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cwizard2011/turing-frontend.svg?branch=master)](https://travis-ci.org/cwizard2011/turing-frontend)
+
 TshirtShop
 
 
@@ -17,6 +19,7 @@ Create a store that allows users to place an order for the Tshirt of their choic
 
 ### Starting the app
 * Run `npm run dev-server` on the terminal to start the app on development mode
+
 
 ### Testing
 * Run `npm run test` on the terminal

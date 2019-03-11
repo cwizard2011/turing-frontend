@@ -26,7 +26,7 @@ export class Modal extends Component {
         style={{ display: modal.current === null ? 'none' : 'block' }}
       >
         <div className="modal-overlay" />
-        <div className="modal-dialog modal-dialog-centered modal-md">
+        <div className="modal-dialog">
           {modal.current === 'signup'
           && <SignupModal show={modal.current === 'signup'} history={history} />}
           {modal.current === 'login'

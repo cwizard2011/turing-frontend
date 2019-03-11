@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import isEmpty from 'is-empty';
 import TextField from '../common/TextField';
 import SignUpInputValidation from '../../validations/SignUpInputValidate';
 import ErrorAlertNotification from '../common/ErrorAlertNotification';
@@ -69,7 +70,7 @@ export class SignUpForm extends Component {
       const { signUp } = this.props;
       signUp(this.state)
         .then(() => {
-          browserHistory.pushState('/items');
+          browserHistory.push('/items');
           this.setState({ isLoading: false });
         });
     }
@@ -93,7 +94,7 @@ export class SignUpForm extends Component {
    * @returns {*} - state
    */
   render() {
-    const { auth } = this.props;
+    const { error, auth } = this.props;
     const {
       errors, email, fullname, password, password_confirmation, isLoading // eslint-disable-line
     } = this.state;
@@ -110,25 +111,21 @@ export class SignUpForm extends Component {
       );
     }
 
-    const { error } = this.props; // eslint-disable-line
-
     const form = (
       <div className="card">
         <div>
-          <small className="form-text login-label">Welcome to ShopMate</small>
+          <small className="form-text login-label">Welcome to TshirtShop</small>
           <small className="form-text login-label-2">
           You can join the community by filling this form
           </small>
         </div>
         <div className="card-body">
-          {
-                (error && error.message) ? (
-                  <ErrorAlertNotification
-                    errors={error.message}
-                    onClick={this.handleDelete}
-                  />
-                ) : ''
-              }
+          {!isEmpty(error) && (
+          <ErrorAlertNotification
+            errors={error.data.message}
+            onClick={this.handleDelete}
+          />
+          )}
           <form>
             <div className="form-row">
               <div className="form-group col-md-6 custom">
