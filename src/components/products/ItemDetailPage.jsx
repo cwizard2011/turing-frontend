@@ -16,6 +16,7 @@ import Modal from '../modals/Modals';
 import DealItem from '../landing/DealItem';
 import Header from '../navigation/Header';
 import AddToCartButton from './AddToCartButton';
+import config from '../../config';
 
 
 /**
@@ -35,7 +36,7 @@ export class ItemDetailPage extends Component {
     const {
       getSingleProduct, match
     } = this.props;
-    const id = match.params.itemId;
+    const id = match.params.product_id;
     this.setState({
       productId: id
     });
@@ -110,7 +111,7 @@ export class ItemDetailPage extends Component {
    */
   render() {
     const {
-      items, modal, auth, showModalSignup, showModalLogin
+      items, modal, auth, showModalSignup, showModalLogin, history
     } = this.props;
     const { color, size, quantity } = this.state;
     if (items && !items.item) {
@@ -124,14 +125,14 @@ export class ItemDetailPage extends Component {
     }
     return (
       <React.Fragment>
-        <Header />
+        <Header history={history} />
         <div className="container shadow-lg d-flex justify-content-center mt-3 mb-3">
           <div className="row w-75 p-3 justify-content-center">
             <div className="col-md-6">
               <div className="card border-0">
                 <div className="card-body">
                   <img
-                    src={items.item.image}
+                    src={`${config.productUrl}/${items.item.image}`}
                     className="img-fluid mx-auto d-block"
                     alt="Item placeholder"
                   />
@@ -139,13 +140,13 @@ export class ItemDetailPage extends Component {
                 <div className="row justify-content-center mt-4 hidden">
                   <div className="col-md-3 card border-0 product-hover">
                     <img
-                      src={items.item.thumbnail}
+                      src={`${config.productUrl}/${items.item.thumbnail}`}
                       className="img-fluid mx-auto d-block"
                       alt="Item placeholder"
                     />
                     <div className="middle">
                       <img
-                        src={items.item.image}
+                        src={`${config.productUrl}/${items.item.image}`}
                         className="img-fluid mx-auto d-block"
                         alt="Item placeholder"
                       />
@@ -153,13 +154,13 @@ export class ItemDetailPage extends Component {
                   </div>
                   <div className="col-md-3 card border-0 product-hover">
                     <img
-                      src={items.item.thumbnail}
+                      src={`${config.productUrl}/${items.item.thumbnail}`}
                       className="img-fluid mx-auto d-block product-hover"
                       alt="Item placeholder"
                     />
                     <div className="middle">
                       <img
-                        src={items.item.image}
+                        src={`${config.productUrl}/${items.item.image}`}
                         className="img-fluid mx-auto d-block"
                         alt="Item placeholder"
                       />
@@ -167,13 +168,13 @@ export class ItemDetailPage extends Component {
                   </div>
                   <div className="col-md-3 card border-0 product-hover">
                     <img
-                      src={items.item.thumbnail}
+                      src={`${config.productUrl}/${items.item.thumbnail}`}
                       className="img-fluid mx-auto d-block"
                       alt="Item placeholder"
                     />
                     <div className="middle">
                       <img
-                        src={items.item.image}
+                        src={`${config.productUrl}/${items.item.image}`}
                         className="img-fluid mx-auto d-block"
                         alt="Item placeholder"
                       />

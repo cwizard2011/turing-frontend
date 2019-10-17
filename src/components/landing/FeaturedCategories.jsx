@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Loading from '../common/Loading';
+import config from '../../config';
 
 
 /**
@@ -38,10 +39,10 @@ export class FeaturedCategories extends Component {
               <div className="row card-body categories container">
                 {department.department.map(items => items.Categories.map(category => (
                   (
-                    <div className="col-md-2 d-flex justify-content-sm-around" key={category.id}>
-                      <Link to={`/items/${items.name}/${category.name}`}>
+                    <div className="col-md-2 d-flex justify-content-sm-around" key={category.category_id}>
+                      <Link to={`/products/${items.name}/${category.name}`}>
                         <img
-                          src={category.Products[1].image}
+                          src={`${config.productUrl}/${category.Products[1].image}`}
                           className="img-fluid img-thumbnail mx-auto d-block"
                           alt=""
                         />

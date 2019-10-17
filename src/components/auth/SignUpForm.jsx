@@ -70,7 +70,7 @@ export class SignUpForm extends Component {
       const { signUp } = this.props;
       signUp(this.state)
         .then(() => {
-          browserHistory.push('/items');
+          browserHistory.push('/products');
           this.setState({ isLoading: false });
         });
     }

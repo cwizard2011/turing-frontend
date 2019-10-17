@@ -12,6 +12,7 @@ import Loading from '../common/Loading';
 import Header from '../navigation/Header';
 import DealItem from '../landing/DealItem';
 import Footer from '../landing/Footer';
+import config from '../../config';
 
 
 /**
@@ -141,7 +142,7 @@ export class ViewProducts extends Component {
    * @returns {JSX} JSX representation of component
    */
   render() {
-    const { location, items } = this.props;
+    const { location, items, history } = this.props;
     const { itemPage, pageLimit, totalCount } = this.state;
     if (items && !items.items) {
       return (
@@ -161,17 +162,17 @@ export class ViewProducts extends Component {
           />
           <meta name="keywords" content="nature, seasonal, regional" />
         </Helmet>
-        <Header />
+        <Header history={history} />
         <ProductBanner location={location} products={items} />
         <div className="container">
           <div className="row main-content">
             <div className="col-md-9 d-flex flex-wrap">
               {items.items.map(item => (
                 (
-                  <div className="border-0 col-md-4 card card-body product-hover" key={item.id}>
-                    <Link to={`/item/${item.id}`}>
+                  <div className="border-0 col-md-4 card card-body product-hover" key={item.product_id}>
+                    <Link to={`/product/${item.product_id}`}>
                       <img
-                        src={item.image}
+                        src={`${config.productUrl}/${item.thumbnail}`}
                         className="img-fluid img-thumbnail mx-auto d-block"
                         alt="Item placeholder"
                       />
@@ -186,7 +187,7 @@ export class ViewProducts extends Component {
                       </div>
                     </Link>
                     <div className="middle hidden">
-                      <Link to={`/item/${item.id}`} className="d-flex justify-content-center">
+                      <Link to={`/product/${item.product_id}`} className="d-flex justify-content-center">
                         <button type="button" className="register-button buy-now">Buy Now</button>
                       </Link>
                     </div>

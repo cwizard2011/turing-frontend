@@ -24,7 +24,7 @@ class Navigation extends Component {
       <ul className="navbar-nav mx-auto link-text">
         {department.department.map(items => (
           (
-            <li className="nav-item mr-4 dropdown" key={items.id}>
+            <li className="nav-item mr-4 dropdown" key={items.department_id}>
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -40,8 +40,8 @@ class Navigation extends Component {
                 {items.Categories.map(category => (
                   (
                     <Link
-                      to={`/items/${items.name}/${category.name}`}
-                      key={category.id}
+                      to={`/products/${items.name}/${category.name}`}
+                      key={category.category_id}
                     >
                       <a className="dropdown-item" href="#">{category.name}</a>
                     </Link>

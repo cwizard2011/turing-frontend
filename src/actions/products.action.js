@@ -52,7 +52,7 @@ export const getItems = (params = null) => dispatch => axios.get(
   });
 
 export const getSingeItem = itemId => dispatch => axios.get(
-  `${config.apiUrl}/items/${itemId}`
+  `${config.apiUrl}/product/${itemId}`
 )
   .then((res) => {
     dispatch({

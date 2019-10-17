@@ -21,7 +21,7 @@ export class LoginModal extends Component {
    * @returns {JSX} JSX representation of component
    */
   render() {
-    const { show } = this.props;
+    const { show, history } = this.props;
     return (
       <div className="modal-content" style={{ display: !show ? 'none' : 'block' }}>
         <div className="modal-header card-title card-header">
@@ -38,7 +38,7 @@ export class LoginModal extends Component {
         <div className="modal-body">
           <div className="container">
             <div className="row">
-              <LoginForm />
+              <LoginForm history={history} />
             </div>
           </div>
         </div>

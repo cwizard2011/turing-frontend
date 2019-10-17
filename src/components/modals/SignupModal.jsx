@@ -22,7 +22,7 @@ export class SignUpModal extends React.Component {
    * @returns {JSX} JSX representation of component
    */
   render() {
-    const { show } = this.props;
+    const { show, history } = this.props;
     return (
       <div className="modal-content" style={{ display: !show ? 'none' : 'block' }}>
         <div className="modal-header card-title card-header">
@@ -36,7 +36,7 @@ export class SignUpModal extends React.Component {
             &times;
           </button>
         </div>
-        <SignupForm />
+        <SignupForm history={history} />
       </div>
     );
   }

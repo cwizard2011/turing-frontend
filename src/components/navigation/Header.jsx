@@ -54,10 +54,10 @@ export class Header extends Component {
      * @returns {*} logout action
      */
     onLogout = (event) => {
-      const { logoutUser } = this.props;
+      const { logoutUser, history } = this.props;
       event.preventDefault();
       logoutUser();
-      browserHistory.push('/');
+      history.push('/');
     }
 
     /**

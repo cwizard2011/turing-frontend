@@ -33,7 +33,7 @@ class HomePage extends Component {
           />
           <meta name="keywords" content="tshirt, shirt, vest, polo" />
         </Helmet>
-        <Header />
+        <Header history={history} />
         <LandingPageBanner />
         <ProductContainer history={history} match={match} department={department} />
         <Footer />

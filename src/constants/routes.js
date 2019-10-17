@@ -1,11 +1,11 @@
 const routes = {
   LANDING: '/',
-  SIGN_UP: '/users',
-  SIGN_IN: '/users/login',
+  SIGN_UP: '/customers',
+  SIGN_IN: '/customer/login',
   SHOPPING_CART: '/cart',
-  LIST_ITEMS: '/items',
+  LIST_ITEMS: '/products',
   LIST_DEPARTMENT: '/department',
-  ITEM_DETAILS: '/item/:itemId'
+  ITEM_DETAILS: '/product/:product_id'
 };
 
 export default routes;

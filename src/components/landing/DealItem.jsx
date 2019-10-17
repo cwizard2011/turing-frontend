@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getDeal } from '../../actions/products.action';
 import Loading from '../common/Loading';
+import config from '../../config';
 
 /**
  * @class LandingPageBanner
@@ -49,10 +50,10 @@ class DealItem extends Component {
             <div className={mainRow}>
               {deal.deal.map(item => (
                 (
-                  <div className={innerColumn} key={item.id}>
-                    <Link to={`/item/${item.id}`}>
+                  <div className={innerColumn} key={item.product_id}>
+                    <Link to={`/product/${item.product_id}`}>
                       <img
-                        src={item.image}
+                        src={`${config.productUrl}/${item.image}`}
                         className="img-fluid img-thumbnail mx-auto d-block"
                         alt="Item placeholder"
                       />

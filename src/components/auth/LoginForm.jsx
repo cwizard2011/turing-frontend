@@ -53,12 +53,12 @@ export class LoginForm extends Component {
   };
 
   onSubmit = (event) => {
-    const { login } = this.props;
+    const { login, history } = this.props;
     event.preventDefault();
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
       login(this.state).then(() => {
-        browserHistory.push('/items');
+        history.push('/products');
         this.setState({ isLoading: false });
       });
     }
@@ -99,7 +99,7 @@ export class LoginForm extends Component {
     } = this.state;
 
     if (auth) {
-      return <Redirect to="#" />;
+      return <Redirect to="/products" />;
     }
     if (isLoading) {
       return (
