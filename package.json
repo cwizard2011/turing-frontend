@@ -11,6 +11,9 @@
     "dev-server": "webpack-dev-server --config webpack.config.dev.js --watch --open --hot",
     "test": "jest --config=jest.config.json src/tests --coverage"
   },
+  "engines": {
+    "node": "8.11.4"
+  },
   "author": "Adeoye Peter",
   "license": "MIT",
   "devDependencies": {
