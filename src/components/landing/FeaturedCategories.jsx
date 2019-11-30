@@ -21,11 +21,7 @@ export class FeaturedCategories extends Component {
     const { department } = this.props;
     if (department && !department.department) {
       return (
-        <div className="d-flex">
-          <div className="row d-flex justify-content-center">
-            <Loading />
-          </div>
-        </div>
+          <Loading />
       );
     }
     return (

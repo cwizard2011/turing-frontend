@@ -103,11 +103,7 @@ export class LoginForm extends Component {
     }
     if (isLoading) {
       return (
-        <div className="d-flex">
-          <div className="row d-flex justify-content-center">
-            <Loading />
-          </div>
-        </div>
+        <Loading />
       );
     }
 

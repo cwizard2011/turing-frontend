@@ -146,11 +146,7 @@ export class ViewProducts extends Component {
     const { itemPage, pageLimit, totalCount } = this.state;
     if (items && !items.items) {
       return (
-        <div className="d-flex">
-          <div className="row d-flex justify-content-center">
-            <Loading />
-          </div>
-        </div>
+        <Loading />
       );
     }
     return (

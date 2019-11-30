@@ -90,11 +90,7 @@ class CartTable extends Component {
       const { userCart } = this.state;
       if (userCart === null) {
         return (
-          <div className="d-flex">
-            <div className="row d-flex justify-content-center">
-              <Loading />
-            </div>
-          </div>
+          <Loading />
         );
       }
       return (
@@ -124,20 +120,20 @@ class CartTable extends Component {
                       <tbody>
                         {userCart.items.rows.map(item => (
                           (
-                            <tr key={item.id}>
+                            <tr key={item.item_id}>
                               <td>
                                 <img src={item.Product.image} alt="Product" />
                                 {' '}
                               </td>
                               <td>
-                                <Link className="hover-blue" to={`/item/${item.Product.id}`}>
+                                <Link className="hover-blue" to={`/item/${item.Product.product_id}`}>
                                   <p>
                                     {item.Product.name}
                                   </p>
                                 </Link>
                                 <p>
                                   <input
-                                    name={item.id}
+                                    name={item.item_id}
                                     type="submit"
                                     value="X Remove"
                                     className="btn btn-light delete red"
@@ -151,7 +147,7 @@ class CartTable extends Component {
                                 <div className="form-group">
                                   <select
                                     className="form-control"
-                                    name={item.id}
+                                    name={item.item_id}
                                     id="exampleSelect1"
                                     value={item.quantity}
                                     onChange={this.handleQuantityChange}

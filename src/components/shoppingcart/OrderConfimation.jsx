@@ -19,7 +19,7 @@ export default class OrderConfirmation extends Component {
   render() {
     const { updated } = this.state;
     if (updated === true) {
-      return <Redirect to="/items" />;
+      return <Redirect to="/products" />;
     }
     return (
       <div className="mt-4 mb-4 mx-auto text-center">

@@ -116,11 +116,7 @@ export class ItemDetailPage extends Component {
     const { color, size, quantity } = this.state;
     if (items && !items.item) {
       return (
-        <div className="d-flex">
-          <div className="row d-flex justify-content-center">
-            <Loading />
-          </div>
-        </div>
+        <Loading />
       );
     }
     return (
@@ -212,7 +208,7 @@ export class ItemDetailPage extends Component {
                 {items.item.AttributeValues.map((item) => {
                   if (item.attribute_id === 2) {
                     return (
-                      <div key={item.id}>
+                      <div key={item.attribute_value_id}>
                         <input
                           type="button"
                           className="dot attributes-color"
@@ -238,7 +234,7 @@ export class ItemDetailPage extends Component {
                 {items.item.AttributeValues.map((item) => {
                   if (item.attribute_id === 1) {
                     return (
-                      <p key={item.id}>
+                      <p key={item.attribute_value_id}>
                         <input
                           className="attributes-size"
                           type="button"

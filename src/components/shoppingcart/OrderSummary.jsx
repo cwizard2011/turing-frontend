@@ -18,7 +18,7 @@ export default class OrderSummary extends Component {
 
     if (shippingId !== '') {
       shippings.map((shipping) => {
-        if (shipping.id === parseFloat(shippingId)) {
+        if (shipping.shipping_id === parseFloat(shippingId)) {
           shippingCost = parseFloat(shipping.shipping_cost);
           deliveryOption = shipping.shipping_type;
         }
@@ -45,7 +45,7 @@ export default class OrderSummary extends Component {
                     cart && cart.items ? (
                       cart.items.rows.map(item => (
                         (
-                          <tr key={item.id}>
+                          <tr key={item.item_id}>
                             <td>{item.Product.name}</td>
                             <td>{item.quantity}</td>
                             <td>
@@ -148,7 +148,10 @@ OrderSummary.propTypes = {
   address1: PropTypes.string,
   city: PropTypes.string,
   country: PropTypes.string,
-  shippings: PropTypes.string,
+  shippings: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.shape([])
+  ]),
   zipCode: PropTypes.string,
   shippingId: PropTypes.string,
   error: PropTypes.shape({}),

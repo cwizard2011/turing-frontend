@@ -44,7 +44,7 @@ export class AddToCartModal extends Component {
             added to cart
               </h3>
               <div className="d-flex p-2 flex-row justify-content-center mx-auto">
-                <Link to="/items">
+                <Link to="/products">
                   <button
                     type="button"
                     className="register-button continue-shopping mr-2"

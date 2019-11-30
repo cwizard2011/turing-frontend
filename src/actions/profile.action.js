@@ -3,7 +3,7 @@ import config from '../config';
 import * as actionTypes from './types';
 
 export const getUserProfile = () => dispatch => axios.get(
-  `${config.apiUrl}/users`
+  `${config.apiUrl}/customer`
 )
   .then((res) => {
     dispatch({
@@ -24,7 +24,7 @@ export const updateUserProfile = update => (dispatch) => {
     user: update
   };
   return axios.put(
-    `${config.apiUrl}/users`, userInfo
+    `${config.apiUrl}/customer`, userInfo
   )
     .then((res) => {
       dispatch({

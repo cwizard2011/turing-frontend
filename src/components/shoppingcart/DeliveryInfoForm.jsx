@@ -166,7 +166,7 @@ export class DeliveryInfoForm extends Component {
                   >
                     {regions !== null ? regions.map(region => (
                       (
-                        <option key={region.id} value={region.id}>{region.shipping_region}</option>
+                        <option key={region.shipping_region_id} value={region.shipping_region_id}>{region.shipping_region}</option>
                       )
                     )) : ''}
                   </select>
@@ -184,13 +184,13 @@ export class DeliveryInfoForm extends Component {
                   <div className="text-left mt-4">
                     <h3 className="col-form-label">Delivery options</h3>
                     {shippings && shippings.length > 0 ? shippings.map(shipping => (
-                      <div key={shipping.id} className="form-check form-check-inline mt-2 ml-4">
+                      <div key={shipping.shipping_id} className="form-check form-check-inline mt-2 ml-4">
                         <input
                           className="form-check-input mx-auto ml-2 mr-4"
                           onChange={handleShippingIdChange}
                           type="radio"
                           name="inlineRadioOptions"
-                          id="inlineRadio1" value={shipping.id}
+                          id="inlineRadio1" value={shipping.shipping_id}
                         />
                         <label
                           className="form-check-label ml-2"

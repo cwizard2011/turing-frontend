@@ -67,10 +67,10 @@ export class SignUpForm extends Component {
     event.preventDefault();
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
-      const { signUp } = this.props;
+      const { signUp, history } = this.props;
       signUp(this.state)
         .then(() => {
-          browserHistory.push('/products');
+          history.push('/products');
           this.setState({ isLoading: false });
         });
     }
@@ -99,15 +99,11 @@ export class SignUpForm extends Component {
       errors, email, fullname, password, password_confirmation, isLoading // eslint-disable-line
     } = this.state;
     if (auth) {
-      return <Redirect to="#" />;
+      return <Redirect to="/products" />;
     }
     if (isLoading) {
       return (
-        <div className="d-flex">
-          <div className="row d-flex justify-content-center">
-            <Loading />
-          </div>
-        </div>
+          <Loading />
       );
     }
 
