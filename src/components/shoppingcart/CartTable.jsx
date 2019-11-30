@@ -10,6 +10,7 @@ import { getCartItem, updateCartQuantity, deleteCart } from '../../actions/cart.
 import Loading from '../common/Loading';
 import CheckoutModal from '../modals/CheckoutModal';
 import { showCheckoutModal } from '../../actions/modal.action';
+import config from '../../config';
 
 /**
  * @description Shopping Cart
@@ -122,7 +123,7 @@ class CartTable extends Component {
                           (
                             <tr key={item.item_id}>
                               <td>
-                                <img src={item.Product.image} alt="Product" />
+                                <img src={`${config.productUrl}/${item.Product.image}`} alt="Product" />
                                 {' '}
                               </td>
                               <td>
