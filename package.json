@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "cookies-js": "^1.2.3",
     "enzyme": "^3.7.0",
