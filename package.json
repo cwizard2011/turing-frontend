@@ -83,7 +83,7 @@
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0",
-    "sanitize-html": "^1.19.1",
+    "sanitize-html": "^2.3.2",
     "thunk": "0.0.1",
     "toastr": "^2.1.4",
     "uglifyjs-webpack-plugin": "^2.0.1",
